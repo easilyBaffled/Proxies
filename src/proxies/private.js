@@ -1,3 +1,5 @@
+/*eslint no-unused-expressions: 0*/
+
 import isA from './isA';
 
 /*******************
@@ -41,7 +43,7 @@ const hideProps = ( obj, lockString ) => {
         }
     } );
 };
-/*
+
 const hidden = hideProps(
     {
         a: 1,
@@ -57,19 +59,14 @@ const hidden = hideProps(
     '_'
 );
 
-logOutput( {
-    keys: Object.keys( hidden ),
-    values: Object.values( hidden ),
-    "hasOwnProperty": hidden.hasOwnProperty( "_b" ),
-    "hidden._b": hidden._b || "undefined",
-    "hidden.c._d": hidden.c._d  || "undefined",
-} )
 
-
-//    check out es-membrain for more depth
-//   https://www.npmjs.com/package/es-membrane
-
-
-ReactDOM.render(<Log output={output} />, document.getElementById("hidden"));
-output = [];
-*/
+Object.keys( hidden );
+// -> [ "a", "c" ]
+Object.values( hidden );
+// -> [ "1", { "e": 2 } ]
+hidden.hasOwnProperty( '_b' );
+// -> false
+hidden._b;
+// -> undefined
+hidden.c._d;
+// -> undefined

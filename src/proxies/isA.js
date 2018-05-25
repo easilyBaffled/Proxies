@@ -1,32 +1,40 @@
 import isPrimitive from 'is-primitive';
 import typeDetect from 'type-detect';
 
-const isA = new Proxy( {
-    // Custom types
-    primative: isPrimitive
+import addDefaultCase from './addDefaultCase';
+const isA = new Proxy( { // Custom types
+    primitive: isPrimitive
 }, {
-    // :: ( _, String ) -> a -> bool
-    get: ( types, name ) => target => (
-        types[ name ]
-            ? types[ name ]( target )
-            : typeDetect( target ).toLowerCase() === name.toLowerCase()
-    )
+    get ( customTypes, name )
+    {
+        return target =>
+            customTypes[ name ]
+                ? customTypes[ name ]( target )
+                : typeDetect( target ).toLowerCase() === name.toLowerCase();
+    }
 } );
 
+// ====== Examples
+isA.number( 0 );
+// -> true
+isA.array( [] );
+// -> true
+isA.object( {} );
+// -> true
+isA.Object( [] );
+// -> false
+isA.RegExp( /a-z/gi );
+isA.Map( new Map() );
+// -> true
+
+// ====== There's never was a Proxy
+isA.Proxy( isA );
+// -> false
+isA.Proxy( new Proxy( {}, {} ) );
+// -> false
+
+export const alt = addDefaultCase( name =>
+    ( target ) => typeDetect( target ).toLowerCase() === name.toLowerCase()
+)( {} );
+
 export default isA;
-
-
-/*
-const conditions = [
-    () => isA.number( 0 ),
-    () => isA.array([]),
-    () => isA.object({}),
-    () => isA.object([]),
-    () => isA.RegExp(/a-z/gi),
-    () => isA.Map( new Map() ),
-    () => isA.Proxy( isA ),
-    () => isA.Proxy( new Proxy( {}, {} ) ),
-];
-
-ReactDOM.render(<Asserts conditions={conditions} />, document.getElementById("typeDetect"));
-*/

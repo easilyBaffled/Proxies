@@ -1,47 +1,72 @@
 import isA from './isA';
 
-export const Undefined = new Proxy( () => '', {
-    get: ( _, t, p ) =>
-        isA.symbol( t ) ? 'Proxy:Undefined' : p,
-    apply: () => Undefined
-} );
-
-const safe = obj => new Proxy( obj, {
-    get ( target, name, proxy ) {
-        const res = Reflect.get( target, name );
-        return res
-            ? isA.primative( res ) ? res : safe( res ) // <- returns a safe wrapped map, but does not catch the error
-            : Undefined;
-    },
-    apply ( ...args )
+const Undefined = ( ...stack ) => new Proxy(
+    () => '',
     {
-        try
-        {
-            return Reflect.apply( ...args );
-        }
-        catch ( e )
-        {
-            return Undefined;
+        stack,
+        get ( _, name, proxy ) {
+            return isA.symbol( name )
+                ? 'Proxy:Undefined' // Only time name isn't a string
+                : name === 'stack'
+                    ? this.stack
+                    : (
+                        this.stack.push( name ), // Update the source
+                        proxy                   // Return what we will use
+                    );
+        },
+        apply ( target, thisArg, argumentsList ) {
+            return Undefined( ...this.stack, argumentsList ); //
         }
     }
-} );
-/*
-const isEven = num => !( parseInt( num ) % 2 )
-const double  = num => parseInt( num ) * 2
+);
 
-function finagleSomeNumbers( target )
-{
+const safe = obj =>
+    new Proxy( obj, {
+        get ( target, name ) {
+            try {
+                const res = Reflect.get( target, name );
+                return !res
+                    ? Undefined( name )
+                    : ( isA.primitive( res ) || name === 'prototype' )
+                        ? res // Can't wrap a primative, don't want to wrap prototype ...for now 😈
+                        : safe( res );
+
+            } catch ( e ) {
+                return Undefined( e );
+            }
+        },
+        apply ( ...args ) {
+            try {
+                return Reflect.apply( ...args );
+            } catch ( e ) {
+                return Undefined( e );
+            }
+        }
+    } );
+
+const isEven = num => !( parseInt( num ) % 2 );
+
+function finagleSomeNumbers ( target ) {
     const result = safe( target )
         .map( JSON.parse )
         .filter( isEven )
-        .map( double )
-        .join('| ')
+        .join( ' | ' );
 
-    return result === Undefined ? new Error( "Could Not Find Numbers" ) : result;
+    return result === Undefined
+        ? ( console.log( result.stack ), '' )
+        : result;
 }
 
-finagleSomeNumbers( [] )
-finagleSomeNumbers( {} )
-finagleSomeNumbers( () => "" )
-*/
+finagleSomeNumbers( [ '1', '2', '3', '4' ] );
+// -> 2 | 4
+
+finagleSomeNumbers( {} );
+// -> ''
+finagleSomeNumbers( [] );
+// -> ''
+finagleSomeNumbers( [ 1, 2, 3 ] );
+// -> ''
+finagleSomeNumbers( [ 'a', 'b' ] );
+// -> ''
+
 export default safe;

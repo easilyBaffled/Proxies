@@ -26,6 +26,7 @@ module.exports = {
     },
     "rules": {
         "react/jsx-indent": [ 2, 4 ],
+        "react/jsx-indent-props": [2, 'first' ],
         "no-global-assign": ["error", {"exceptions": ["require"]}],
         "no-native-reassign": ["error", {"exceptions": ["require"]}],
         "brace-style": ["error", "allman"],

@@ -10,7 +10,8 @@ const observable = obj => new Proxy( obj, {
     {
         return name === 'subscribe'
             ? ( ...func ) => this.subscribers = this.subscribers.concat( func )
-            : name === 'subscribers' ? this.subscribers
+            : name === 'subscribers'
+                ? this.subscribers
                 : Reflect.get( target, name );
     },
     set ( target, name, newValue )
@@ -36,10 +37,12 @@ const scope = observable( {} );
 scope.subscribe( console.log );
 
 scope.a = 1;
+
 Object.defineProperty( scope, 'property1', {
     value: 42,
     writable: false
 } );
-console.log( scope, Object.keys( scope ), scope.subscribers );
+
+console.log( scope, scope.subscribers );
 
 export default observable;

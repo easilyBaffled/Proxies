@@ -1,6 +1,6 @@
-import { pipe } from "ramda";
+import { pipe } from 'ramda';
 
-import { addDefaultCase, autoBind, chaining } from "./index";
+import { addDefaultCase, autoBind, chaining } from './index';
 
 export default pipe(
     autoBind,
