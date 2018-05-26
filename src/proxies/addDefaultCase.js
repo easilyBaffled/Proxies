@@ -1,4 +1,5 @@
-export default defaultHandler => obj => {
+export default defaultHandler => obj => 
+{
     const def = typeof defaultHandler === 'function'
         ? defaultHandler
         : () => defaultHandler;

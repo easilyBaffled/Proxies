@@ -22,9 +22,11 @@ module.exports = {
         "it": true,
         "before": true,
         "JSON": true,
-        "expect": true
+        "expect": true,
+        "fetch": true
     },
     "rules": {
+        "react/prop-types": 1, // because this shouldn't block a commit
         "react/jsx-indent": [ 2, 4 ],
         "react/jsx-indent-props": [2, 'first' ],
         "no-global-assign": ["error", {"exceptions": ["require"]}],
@@ -49,7 +51,6 @@ module.exports = {
                 "after": true
             }
         ],
-        "brace-style": "off",
         "camelcase": "off",
         "comma-dangle": [
             2,

@@ -16,8 +16,10 @@
 // } );
 
 const trapLogger = ( obj = {} ) => new Proxy( obj, {
-    get ( target, trapName, receiver ) {
-        return ( ...args ) => { // args[0] is the targetObj
+    get ( target, trapName, receiver ) 
+    {
+        return ( ...args ) => 
+        { // args[0] is the targetObj
             let a = args.length > 2
                 ? args.slice( 1, args.length - 1 )
                 : args.slice( 1 );

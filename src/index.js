@@ -84,7 +84,8 @@ const urlBuilder = {
 */
 
 const slides = [
-    () => {
+    () => 
+    {
         // ===== Setup
         const urlBuilder = {
             url: [],
@@ -136,7 +137,8 @@ const slides = [
         img: 'list of traps',
         notes: 'how it works'
     },
-    () => {
+    () => 
+    {
         // ====== Things Before Proxies Prestige
         const urlBuilder = {
             url: [],
@@ -159,7 +161,8 @@ const slides = [
         urlBuilder.c[ urlBuilder.d ];
         // -> Uncaught TypeError: Cannot read property 'undefined' of undefined
     },
-    () => {
+    () => 
+    {
         // ====== A.B.T.
         const urlBuilder = {
             url: [],
@@ -190,7 +193,8 @@ const slides = [
         // -> Uncaught TypeError: c is not in [object Object]
 
     },
-    ( key ) => {
+    ( key ) => 
+    {
         // ====== Lucky Switch
         switch ( key )
         {
@@ -204,7 +208,8 @@ const slides = [
             0;
         }
     },
-    () => {
+    () => 
+    {
         const urlBuilder = {
             url: [],
             addParam ( str )
@@ -248,7 +253,8 @@ const slides = [
         // ====== Making a whole lot of something out of nothing
         // isA
     },
-    () => {
+    () => 
+    {
         // ====== Moving On
         // ====== This is not too helpful
         const loudBuilder = new Proxy( urlBuilder, {
@@ -262,11 +268,13 @@ const slides = [
             }
         } );
     },
-    () => {
+    () => 
+    {
         // ====== 💥Boom💥
         const isEven = num => !( parseInt( num ) % 2 );
 
-        function finagleSomeNumbers ( target ) {
+        function finagleSomeNumbers ( target ) 
+        {
             return target
                 .map( JSON.parse )
                 .filter( isEven )
@@ -284,12 +292,16 @@ const slides = [
         // -> VM323:1 Uncaught SyntaxError: Unexpected token a in JSON at position 0
         finagleSomeNumbers( new Proxy( {},
             {
-                get: () => { throw new Error( 'boom' ); }
+                get: () => 
+                {
+                    throw new Error( 'boom' ); 
+                }
             }
         ) );
         // -> Uncaught Error: boom
     },
-    () => {
+    () => 
+    {
         const isEven = num => !( parseInt( num ) % 2 );
 
         function finagleSomeNumbers ( target )

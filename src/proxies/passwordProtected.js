@@ -19,7 +19,8 @@ import isA from './isA';
 /*******************
  Private props
  *******************/
-export const protectProps = ( obj, lockString ) => {
+export const protectProps = ( obj, lockString ) => 
+{
     const isLocked = str => isA.string( str ) ? str.startsWith( lockString ) : false;
 
     const wrap = child =>

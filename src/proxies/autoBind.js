@@ -12,7 +12,8 @@ const autoBind = obj => new Proxy( obj, {
         Thus, the result (*) must come from target. In contrast, this must be bound to receiver (**),
         so that the bound method has access to properties of prior objects.
     */
-    get ( target, key, receiver ) {
+    get ( target, key, receiver ) 
+    {
         const result = target[ key ]; // *
         return isA.function( result )
             ? result.bind( receiver ) // **

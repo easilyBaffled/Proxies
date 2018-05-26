@@ -5,7 +5,8 @@ import isA from './isA';
 /*******************
  Private props
  *******************/
-const hideProps = ( obj, lockString ) => {
+const hideProps = ( obj, lockString ) => 
+{
     const isLocked = str => isA.string( str ) ? str.startsWith( lockString ) : false;
     const wrap = child =>
         typeof child === 'object' || typeof child === 'function'

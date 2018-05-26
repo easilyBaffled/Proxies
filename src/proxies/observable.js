@@ -3,7 +3,8 @@
 * */
 const observable = obj => new Proxy( obj, {
     subscribers: [],
-    subscribe ( ...func ) {
+    subscribe ( ...func ) 
+    {
         this.subscribers = this.subscribers.concat( func );
     },
     get ( target, name )

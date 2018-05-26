@@ -1,3 +1,4 @@
+export default `
 import safe from "../../proxies/undefined";
 
 const isEven = num => !( parseInt( num ) % 2 );
@@ -26,3 +27,4 @@ finagleSomeNumbers( [ 'a', 'b' ] );
 // -> ''
 
 export default safe;
+`;

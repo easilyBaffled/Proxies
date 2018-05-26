@@ -4,7 +4,8 @@ const Undefined = ( ...stack ) => new Proxy(
     () => '',
     {
         stack,
-        get ( _, name, proxy ) {
+        get ( _, name, proxy ) 
+        {
             return isA.symbol( name )
                 ? 'Proxy:Undefined' // Only time name isn't a string
                 : name === 'stack'
@@ -14,7 +15,8 @@ const Undefined = ( ...stack ) => new Proxy(
                         proxy                   // Return what we will use
                     );
         },
-        apply ( target, thisArg, argumentsList ) {
+        apply ( target, thisArg, argumentsList ) 
+        {
             return Undefined( ...this.stack, argumentsList ); //
         }
     }
@@ -22,8 +24,10 @@ const Undefined = ( ...stack ) => new Proxy(
 
 const safe = obj =>
     new Proxy( obj, {
-        get ( target, name ) {
-            try {
+        get ( target, name ) 
+        {
+            try 
+            {
                 const res = Reflect.get( target, name );
                 return !res
                     ? Undefined( name )
@@ -31,14 +35,20 @@ const safe = obj =>
                         ? res // Can't wrap a primative, don't want to wrap prototype ...for now 😈
                         : safe( res );
 
-            } catch ( e ) {
+            }
+            catch ( e ) 
+            {
                 return Undefined( e );
             }
         },
-        apply ( ...args ) {
-            try {
+        apply ( ...args ) 
+        {
+            try 
+            {
                 return Reflect.apply( ...args );
-            } catch ( e ) {
+            }
+            catch ( e ) 
+            {
                 return Undefined( e );
             }
         }
@@ -46,7 +56,8 @@ const safe = obj =>
 
 const isEven = num => !( parseInt( num ) % 2 );
 
-function finagleSomeNumbers ( target ) {
+function finagleSomeNumbers ( target ) 
+{
     const result = safe( target )
         .map( JSON.parse )
         .filter( isEven )

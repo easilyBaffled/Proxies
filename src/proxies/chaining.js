@@ -9,7 +9,8 @@ const chain = func => new Proxy( func, {
         const prop = Reflect.get( target, key );
         console.log( prop );
         return isA.function( prop )
-            ? ( ...args ) => {
+            ? ( ...args ) => 
+            {
                 return prop( ...args ) || proxy;
             }
             : prop;

@@ -1,13 +1,13 @@
 
 import React from 'react';
-import { Slide, Deck, Heading, Text, List, ListItem, BlockQuote, Quote, Cite } from 'spectacle';
-import CodeSlide from 'spectacle-code-slide';
+import { Slide, Deck, Heading, Text, List, ListItem, BlockQuote, Quote, Cite, CodePane } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
 import createTheme from 'spectacle/lib/themes/default';
-import x from 'raw-loader!./assets/examples/undefined.example'; // eslint-disable-line import/no-webpack-loader-syntax
 
+import x from './assets/examples/undefined';
 import cupAndBalls1Gif from './assets/images/cupAndBalls1.gif';
 
+const addLineNumbers = str => str.trim().split( '\n' ).map( ( line, lineNumber ) => `${lineNumber + 1}. ${line}` ).join( '\n' );
 
 
 require( 'normalize.css' );
@@ -65,18 +65,18 @@ export default () =>
             </BlockQuote>
         </Slide>
         <Slide bgColor='tertiary'>
-            <CodeSlide
-                transition={[]}
-                lang='js'
-                code={require( 'raw-loader!./assets/examples/undefined.example' )} // eslint-disable-line import/no-webpack-loader-syntax
-                ranges={[
-                    { loc: [ 0, 29 ], title: 'Walking through some code' },
-                    { loc: [ 0, 1 ], title: 'The Beginning' },
-                    { loc: [ 1, 2 ] },
-                    { loc: [ 1, 2 ], note: 'Heres a note!' },
-                    { loc: [ 2, 3 ] },
-                    { loc: [ 4, 7 ], image: cupAndBalls1Gif },
-                    { loc: [ 8, 10 ] }
-                ]} />
+            <CodePane
+                lang='javascript'
+                source={addLineNumbers( x )}
+                // ranges={[
+                //     { loc: [ 0, 29 ], title: 'Walking through some code' },
+                //     { loc: [ 0, 1 ], title: 'The Beginning' },
+                //     { loc: [ 1, 2 ] },
+                //     { loc: [ 1, 2 ], note: 'Heres a note!' },
+                //     { loc: [ 2, 3 ] },
+                //     { loc: [ 4, 7 ], image: cupAndBalls1Gif },
+                //     { loc: [ 8, 10 ] }
+                // ]}
+            />
         </Slide>
     </Deck>;

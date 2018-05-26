@@ -1,14 +1,18 @@
-function urlBuilder ( domain ) {
+function urlBuilder ( domain ) 
+{
     var parts = [];
-    var proxy = new Proxy( function () {
+    var proxy = new Proxy( function () 
+    {
         var returnValue = domain + '/' + parts.join( '/' );
         parts = [];
         return returnValue;
     }, {
-        has: function () {
+        has: function () 
+        {
             return true;
         },
-        get: function ( object, prop ) {
+        get: function ( object, prop ) 
+        {
             parts.push( prop );
             return proxy;
         }
