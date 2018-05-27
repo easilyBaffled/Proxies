@@ -1,34 +1,70 @@
 
 import React from 'react';
-import { Slide, Deck, Heading, Text, List, ListItem, BlockQuote, Quote, Cite, CodePane } from 'spectacle';
+import { Image, Slide, Deck, Heading, Text, List, ListItem, BlockQuote, Quote, Cite, CodePane } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
 import createTheme from 'spectacle/lib/themes/default';
+import { stripIndent } from 'common-tags';
 
 import x from './assets/examples/undefined';
-import cupAndBalls1Gif from './assets/images/cupAndBalls1.gif';
+import cupAndBalls1 from './assets/images/cupAndBalls1.gif';
+import cupAndBalls2 from './assets/images/cupAndBalls2.gif';
+import { trick } from './proxies';
 
 const addLineNumbers = str => str.trim().split( '\n' ).map( ( line, lineNumber ) => `${lineNumber + 1}. ${line}` ).join( '\n' );
 
 
 require( 'normalize.css' );
 
+const images = {
+    cupAndBalls1,
+    cupAndBalls2
+};
+
 preloader( {
-    cupAndBalls1Gif
+    images
 } );
 
+const Trick = () =>
+{
+    const urlBuilder = {
+        url: [],
+        addParam ( str )
+        {
+            this.url.push( str );
+        },
+        getUrl ()
+        {
+            return '/' + this.url.join( '/' );
+        }
+    };
+
+    const builder = trick( urlBuilder );
+    // ===== The Pledge
+    console.log( Object.keys( builder ) );
+    builder.addParam( 'a' );
+    builder.addParam( 'b' );
+    console.log( builder.getUrl() );
+    // ====== The Turn
+    console.log( builder.c );  // -> undefined ?
+    // ====== The Turn Around
+    console.log( builder.c );  // -> undefined ?
+    console.log( builder.d().e().f().getUrl() );
+    // ====== The Prestige
+    console.log( 'd' in builder, 'e' in builder );
+    console.log( 'addParam' in builder );
+    console.log( Object.getOwnPropertyDescriptor( builder, 'url' ) );
+    return null;
+};
+
 const theme = createTheme( {
-    primary: 'white',
-    secondary: '#1F2022',
-    tertiary: '#03A9FC',
-    quarternary: '#CECECE'
+    primary: 'linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)',
+    secondary: 'linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%)',
+    tertiary: 'linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)',
+    quarternary: 'red'
 }, {
     primary: 'Montserrat',
     secondary: 'Helvetica'
 } );
-
-
-
-console.log( x );
 
 export default () =>
     <Deck transition={[ 'zoom', 'slide' ]} transitionDuration={500} theme={theme}>
@@ -78,5 +114,50 @@ export default () =>
                 //     { loc: [ 8, 10 ] }
                 // ]}
             />
+        </Slide>
+        <Slide bgImage={images.cupAndBalls1.replace( '/', '' )}>
+            <Heading size={1} fit caps lineHeight={1} textColor='secondary'>
+                It's Magic
+            </Heading>
+        </Slide>
+        <Slide bgImage={images.cupAndBalls2.replace( '/', '' )}>
+            <Heading size={1} fit caps lineHeight={1} textColor='secondary'>
+                It's Work
+            </Heading>
+        </Slide>
+        <Slide background='linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)'>
+            <CodePane
+                lang='javascript'
+                source={addLineNumbers( stripIndent`
+                    const urlBuilder = {
+                        url: [],
+                        addParam ( str )
+                        {
+                            this.url.push( str );
+                        },
+                        getUrl ()
+                        {
+                            return '/' + this.url.join( '/' );
+                        }
+                    };
+
+                    const builder = trick( urlBuilder );
+                    // ===== The Pledge
+                    console.log( Object.keys( builder ) );
+                    builder.addParam( 'a' );
+                    builder.addParam( 'b' );
+                    console.log( builder.getUrl() );
+                    // ====== The Turn
+                    console.log( builder.c );  // -> undefined ?
+                    // ====== The Turn Around
+                    console.log( builder.c );  // -> undefined ?
+                    console.log( builder.d().e().f().getUrl() );
+                    // ====== The Prestige
+                    console.log( 'd' in builder, 'e' in builder );
+                    console.log( 'addParam' in builder );
+                    console.log( Object.getOwnPropertyDescriptor( builder, 'url' ) );
+                ` )}
+            />
+            <Trick />
         </Slide>
     </Deck>;
