@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-eslint": "^8.2.3",
     "build-index": "^0.2.2",
     "common-tags": "^1.7.2",
     "eslint": "^4.19.1",
@@ -26,9 +27,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "eslint --fix ./src && react-scripts test --env=jsdom",
+    "test": "eslint --quiet --fix ./src && react-scripts test --env=jsdom",
     "test:comit": "CI=true npm test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "addIndexTo": "npx create-index"
   },
   "pre-commit": [
     "test:comit"

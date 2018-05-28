@@ -84,6 +84,9 @@ const urlBuilder = {
 */
 
 const slides = [
+    {
+        // ====== About Me
+    },
     () => 
     {
         // ===== Setup
@@ -101,7 +104,7 @@ const slides = [
 
         const builder = trick( urlBuilder );
         // ===== The Pledge
-        console.log( Object.keys( builder ) );
+        console.log( Object.keys( builder ) ); // <- will keys work?
         builder.addParam( 'a' );
         builder.addParam( 'b' );
         console.log( builder.getUrl() );
@@ -114,6 +117,11 @@ const slides = [
         console.log( 'd' in builder, 'e' in builder );
         console.log( 'addParam' in builder );
         console.log( Object.getOwnPropertyDescriptor( builder, 'url' ) );
+        // ====
+        console.log( builder );
+    },
+    {
+        // Cool Funtional programing https://docs.google.com/drawings/d/130d_i7D90kaIFfYnNDSFJf1L7obRmT9zTBLu411jRpE/edit
     },
     {
         img: 'penn and teller: ball and cup',
@@ -247,6 +255,10 @@ const slides = [
         // -> "/c/d"
     },
     {
+        // THis is not friendly to your co workers because you can't console.log defaultBuilder to see whats up
+        // proxies are invisible, they do not have a type to reflect back.
+    },
+    {
         // Type-Detect github image
     },
     {
@@ -290,15 +302,6 @@ const slides = [
         // -> Uncaught SyntaxError: Unexpected number
         finagleSomeNumbers( [ 'a', 'b' ] );
         // -> VM323:1 Uncaught SyntaxError: Unexpected token a in JSON at position 0
-        finagleSomeNumbers( new Proxy( {},
-            {
-                get: () => 
-                {
-                    throw new Error( 'boom' ); 
-                }
-            }
-        ) );
-        // -> Uncaught Error: boom
     },
     () => 
     {
@@ -347,3 +350,8 @@ const slides = [
         // those were a lot of traps, here to see them in action
     }
 ];
+
+// JSDOM uses proxies
+// Chai uses proxies for spell checking
+// React uses proxies to save events in an async world
+

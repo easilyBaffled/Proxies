@@ -10,7 +10,7 @@ const addWrap = arr => new Proxy( arr, {
     }
 } );
 
-// const nums = [ 4, 5, 6, 7, 8 ];
+// const nums = [ 4, 5, 6, 9, 8 ];
 // nums[ -1 ]
 
 export default addWrap;

@@ -1,5 +1,6 @@
 module.exports = {
     "extends": ["standard", "standard-react"],
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 8,
         "ecmaFeatures": {
@@ -23,7 +24,8 @@ module.exports = {
         "before": true,
         "JSON": true,
         "expect": true,
-        "fetch": true
+        "fetch": true,
+        "import": true
     },
     "rules": {
         "react/prop-types": 1, // because this shouldn't block a commit
