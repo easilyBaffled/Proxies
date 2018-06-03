@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import Presentation from './Presentation';
-import { trick, isA, protectProps } from './proxies';
+import { trick, isA } from './proxies';
 
 // import registerServiceWorker from './registerServiceWorker';
 
@@ -121,9 +121,6 @@ const slides = [
         console.log( builder );
     },
     {
-        // Cool Funtional programing https://docs.google.com/drawings/d/130d_i7D90kaIFfYnNDSFJf1L7obRmT9zTBLu411jRpE/edit
-    },
-    {
         img: 'penn and teller: ball and cup',
         notes: 'magic bends reality, subverts understanding, mystefies the audiance',
         source: 'https://www.youtube.com/watch?v=8osRaFTtgHo'
@@ -135,72 +132,70 @@ const slides = [
     },
     {
         img: 'mdn proxy',
-        notes: 'it is a well detailed part of regular js, just nobdy seems to know aobut it, which is fine since it\'s invisible, ...'
-    },
-    {
-        img: 'usablilty charts',
-        notes: 'you can use it, but you can\'t babel it'
+        notes: 'it is a well detailed part of regular js, just nobdy seems to know aobut it, which is fine since it\'s invisible, ...',
+        img2: 'usablilty charts',
+        notes2: 'you can use it, but you can\'t babel it'
     },
     {
         img: 'list of traps',
         notes: 'how it works'
     },
-    () => 
-    {
-        // ====== Things Before Proxies Prestige
-        const urlBuilder = {
-            url: [],
-            addParam ( str )
-            {
-                this.url.push( str );
-            },
-            getUrl ()
-            {
-                return '/' + this.url.join( '/' );
-            }
-        };
-
-        urlBuilder.c;
-        // -> undefined
-        urlBuilder.c.d;
-        // -> Uncaught TypeError: Cannot read property 'd' of undefined
-        urlBuilder.c();
-        // -> Uncaught TypeError: urlBuilder.c is not a function
-        urlBuilder.c[ urlBuilder.d ];
-        // -> Uncaught TypeError: Cannot read property 'undefined' of undefined
-    },
-    () => 
-    {
-        // ====== A.B.T.
-        const urlBuilder = {
-            url: [],
-            addParam ( str )
-            {
-                this.url.push( str );
-            },
-            getUrl ()
-            {
-                return '/' + this.url.join( '/' );
-            }
-        };
-
-        const loudBuilder = new Proxy( urlBuilder, {
-            get ( target, name, proxy )
-            {
-                const res = target[ name ];
-                if ( res )
-                    return res;
-                throw new TypeError( `${name} is not in ${target}` );
-
-            }
-        } );
-
-        console.log( loudBuilder.c );
-        // -> Uncaught TypeError: c is not in [object Object]
-        console.log( loudBuilder.c() );
-        // -> Uncaught TypeError: c is not in [object Object]
-
-    },
+    // () =>
+    // {
+    //     // ====== Things Before Proxies Prestige
+    //     const urlBuilder = {
+    //         url: [],
+    //         addParam ( str )
+    //         {
+    //             this.url.push( str );
+    //         },
+    //         getUrl ()
+    //         {
+    //             return '/' + this.url.join( '/' );
+    //         }
+    //     };
+    //
+    //     urlBuilder.c;
+    //     // -> undefined
+    //     urlBuilder.c.d;
+    //     // -> Uncaught TypeError: Cannot read property 'd' of undefined
+    //     urlBuilder.c();
+    //     // -> Uncaught TypeError: urlBuilder.c is not a function
+    //     urlBuilder.c[ urlBuilder.d ];
+    //     // -> Uncaught TypeError: Cannot read property 'undefined' of undefined
+    // },
+    // () =>
+    // {
+    //     // ====== A.B.T.
+    //     const urlBuilder = {
+    //         url: [],
+    //         addParam ( str )
+    //         {
+    //             this.url.push( str );
+    //         },
+    //         getUrl ()
+    //         {
+    //             return '/' + this.url.join( '/' );
+    //         }
+    //     };
+    //
+    //     const loudBuilder = new Proxy( urlBuilder, {
+    //         get ( target, name )
+    //         {
+    //             const res = target[ name ];
+    //             if ( res )
+    //                 return res;
+    //             throw new TypeError( `${name} is not in ${target}` );
+    //
+    //         }
+    //     } );
+    //
+    //     console.log( loudBuilder.c );
+    //     // -> Uncaught TypeError: c is not in [object Object]
+    //     console.log( loudBuilder.c() );
+    //     // -> Uncaught TypeError: c is not in [object Object]
+    //
+    // },
     ( key ) => 
     {
         // ====== Lucky Switch
@@ -255,30 +250,11 @@ const slides = [
         // -> "/c/d"
     },
     {
-        // THis is not friendly to your co workers because you can't console.log defaultBuilder to see whats up
-        // proxies are invisible, they do not have a type to reflect back.
-    },
-    {
         // Type-Detect github image
     },
     {
         // ====== Making a whole lot of something out of nothing
         // isA
-    },
-    () => 
-    {
-        // ====== Moving On
-        // ====== This is not too helpful
-        const loudBuilder = new Proxy( urlBuilder, {
-            get ( target, name, proxy )
-            {
-                const res = target[ name ];
-                if ( res )
-                    return res;
-                throw new TypeError( `${name} is not in ${target}` );
-
-            }
-        } );
     },
     () => 
     {
@@ -329,17 +305,13 @@ const slides = [
     {
         // event recorder
     },
-    {
-        // ====== Transition to Set
-        // MDN Set Docs
-    },
-    {
-        // observable
-    },
-    {
-        // ====== Another Set Example immer
-        // Screenshot of immer Github
-    },
+    // {
+    //     // ====== Transition to Set
+    //     // MDN Set Docs
+    // },
+    // {
+    //     // observable
+    // },
     {
         // private with _
     },
@@ -347,11 +319,11 @@ const slides = [
         // password
     },
     {
-        // those were a lot of traps, here to see them in action
+        // traps logger
     }
 ];
 
 // JSDOM uses proxies
 // Chai uses proxies for spell checking
 // React uses proxies to save events in an async world
-
+// Immer immutability

@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { Image, Slide, Deck, Heading, Text, List, ListItem, BlockQuote, Quote, Cite, CodePane } from 'spectacle';
-import preloader from 'spectacle/lib/utils/preloader';
+import { Slide, Deck } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 
+import './App.css';
 // import slides from './assets/slides';
 
 const slides = [
@@ -15,7 +15,8 @@ const slides = [
     import( './assets/slides/6' ),
     import( './assets/slides/7' ),
     import( './assets/slides/8' ),
-    import( './assets/slides/9' )
+    import( './assets/slides/9' ),
+    import( './assets/slides/10' )
 ];
 
 require( 'normalize.css' );
@@ -62,7 +63,7 @@ export default class Presentation extends React.Component
     {
         const { slides } = this.state;
         return (
-            <Deck transition={[ 'zoom', 'slide' ]} transitionDuration={500} theme={theme}>
+            <Deck theme={theme}>
                 {
                     slides.map( ( slide, index ) => 
                     {

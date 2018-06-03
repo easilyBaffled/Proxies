@@ -7,8 +7,10 @@ import { addLineNumbers } from '../../../util';
 import Trick from './trick';
 
 export default (
-    <Slide background='linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)'>
+    <Slide transition={[]} background='linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)'>
         <CodePane
+            className='nice-code'
+            theme='light'
             transition={[ 'slide' ]}
             transitionDuration={800}
             lang='javascript'

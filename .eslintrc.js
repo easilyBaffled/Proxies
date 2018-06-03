@@ -28,6 +28,7 @@ module.exports = {
         "import": true
     },
     "rules": {
+        "react/jsx-curly-spacing": [1, {"when": "always", "children": true}],
         "react/prop-types": 1, // because this shouldn't block a commit
         "react/jsx-indent": [ 2, 4 ],
         "react/jsx-indent-props": [2, 'first' ],
