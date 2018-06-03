@@ -45,6 +45,11 @@ export default class Console extends React.Component
                 <CodePane theme='dark'
                     lang='javascript'
                     source={ stripIndent( this.state.logs.join( '\n\n' ) ) }
+                    editorStyle={ {
+                        transition: 'all 0.3s cubic-bezier(.25,.8,.25,1)',
+                        boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
+                        borderRadius: 6
+                    } }
                 />
             </React.Fragment>
         );
