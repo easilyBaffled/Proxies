@@ -3,6 +3,7 @@ export default defaultHandler => obj =>
     const def = typeof defaultHandler === 'function'
         ? defaultHandler
         : () => defaultHandler;
+
     return new Proxy( obj, {
         get ( target, name, proxy )
         {

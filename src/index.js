@@ -86,6 +86,10 @@ const urlBuilder = {
 const slides = [
     {
         // ====== About Me
+        // Danny Michaelis
+        // Front End Dev at Lab49
+        // easilyBaffled everywhere online
+        // going to run through a bunch of code snippes because well ⚡️ and I'm pretty nervous up here and want to get through it
     },
     () => 
     {
@@ -121,16 +125,6 @@ const slides = [
         console.log( builder );
     },
     {
-        img: 'penn and teller: ball and cup',
-        notes: 'magic bends reality, subverts understanding, mystefies the audiance',
-        source: 'https://www.youtube.com/watch?v=8osRaFTtgHo'
-    },
-    {
-        img: 'penn and teller blast off clear box: ball and cup',
-        notes: 'once you know how it\'s done you see the mechanics, the work the control',
-        source: 'https://www.youtube.com/watch?v=8osRaFTtgHo'
-    },
-    {
         img: 'mdn proxy',
         notes: 'it is a well detailed part of regular js, just nobdy seems to know aobut it, which is fine since it\'s invisible, ...',
         img2: 'usablilty charts',
@@ -140,62 +134,6 @@ const slides = [
         img: 'list of traps',
         notes: 'how it works'
     },
-    // () =>
-    // {
-    //     // ====== Things Before Proxies Prestige
-    //     const urlBuilder = {
-    //         url: [],
-    //         addParam ( str )
-    //         {
-    //             this.url.push( str );
-    //         },
-    //         getUrl ()
-    //         {
-    //             return '/' + this.url.join( '/' );
-    //         }
-    //     };
-    //
-    //     urlBuilder.c;
-    //     // -> undefined
-    //     urlBuilder.c.d;
-    //     // -> Uncaught TypeError: Cannot read property 'd' of undefined
-    //     urlBuilder.c();
-    //     // -> Uncaught TypeError: urlBuilder.c is not a function
-    //     urlBuilder.c[ urlBuilder.d ];
-    //     // -> Uncaught TypeError: Cannot read property 'undefined' of undefined
-    // },
-    // () =>
-    // {
-    //     // ====== A.B.T.
-    //     const urlBuilder = {
-    //         url: [],
-    //         addParam ( str )
-    //         {
-    //             this.url.push( str );
-    //         },
-    //         getUrl ()
-    //         {
-    //             return '/' + this.url.join( '/' );
-    //         }
-    //     };
-    //
-    //     const loudBuilder = new Proxy( urlBuilder, {
-    //         get ( target, name )
-    //         {
-    //             const res = target[ name ];
-    //             if ( res )
-    //                 return res;
-    //             throw new TypeError( `${name} is not in ${target}` );
-    //
-    //         }
-    //     } );
-    //
-    //     console.log( loudBuilder.c );
-    //     // -> Uncaught TypeError: c is not in [object Object]
-    //     console.log( loudBuilder.c() );
-    //     // -> Uncaught TypeError: c is not in [object Object]
-    //
-    // },
     ( key ) => 
     {
         // ====== Lucky Switch
@@ -226,14 +164,14 @@ const slides = [
         };
 
         const defaultBuilder = new Proxy( urlBuilder, {
-            get ( target, name, proxy )
+            get ( target, name, p )
             {
                 const res = target[ name ];
                 if ( res )
                     return res;
                 return () => (                // Because of the ( ... )
                     target.addParam( name ), // <- this gets run
-                    proxy                   // <- this gets returned
+                    p                   // <- this gets returned
                 );
             }
         } );
@@ -270,8 +208,6 @@ const slides = [
         }
         finagleSomeNumbers( [ '1', '2', '3', '4' ] );
         // -> 2 | 4
-        finagleSomeNumbers( {} );
-        // -> Uncaught TypeError: target.map is not a function
         finagleSomeNumbers( [] );
         // -> Uncaught ReferenceError: isEven is not defined
         finagleSomeNumbers( [ 1, 2, 3 ] );
@@ -299,19 +235,8 @@ const slides = [
         // undefined
     },
     {
-        // ====== We Just Used Apply
-        // MDN Apply Docs
-    },
-    {
         // event recorder
     },
-    // {
-    //     // ====== Transition to Set
-    //     // MDN Set Docs
-    // },
-    // {
-    //     // observable
-    // },
     {
         // private with _
     },
