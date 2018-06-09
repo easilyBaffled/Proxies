@@ -64,7 +64,7 @@ export default class Ex extends React.Component
         let [ start, end ] = slideSections[ this.state.i ];
 
         const { height, marginTop, lengthBasedTextSize } = this.calculateSlideMesurments( start, end );
-
+        console.log( codeStr, slideSections, marginTop );
         return (
             <Slide className='nice-code'>
                 <CodePane overflow='scroll'

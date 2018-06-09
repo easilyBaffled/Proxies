@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Slide, Deck } from 'spectacle';
+import { Deck } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 
 import * as urlBuilder from './assets/slides/urlBuilder';
@@ -41,15 +41,12 @@ export default class Presentation extends React.Component
         const { slides } = this.state;
 
         return (
-            <Deck theme={theme}>
+            <Deck theme={ theme }>
                 {
                     slides.map( ( slideProps, index ) =>
-                        <ItrCodeSlide removeSectionHeads key={index} { ...slideProps } />
-
-                        // Array.isArray( slide )
-                        //     ? slide.map( ( s, ix ) => React.cloneElement( s, { key: index + ' ' + ix } ) )
-                        //     : React.cloneElement( slide, { key: index } )
-                    )
+                    {
+                        return <ItrCodeSlide removeSectionHeads key={ index } { ...slideProps } />;
+                    } )
                 }
             </Deck>
         );
