@@ -18,16 +18,17 @@ export default log =>
     const builder = improve( urlBuilder );
 
     // #### Default Handler Proxy
-    const improve = targetObject => new Proxy( targetObject, { // object of traps
-        get ( target, prop, proxy )
-        {
-            const result = Reflect.get( target, prop, proxy );
+    const improve = targetObject =>
+        new Proxy( targetObject, { // object of traps
+            get ( target, prop, proxy )
+            {
+                const result = Reflect.get( target, prop, proxy );
 
-            return result || ( () => (
-                target.addParam( prop ),
-                proxy
-            ) );
-        }
-    } );
+                return result || ( () => (
+                    target.addParam( prop ),
+                    proxy
+                ) );
+            }
+        } );
 };
 

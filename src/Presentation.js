@@ -5,6 +5,12 @@ import createTheme from 'spectacle/lib/themes/default';
 
 import * as urlBuilder from './assets/slides/urlBuilder';
 import * as urlBuilderRedux from './assets/slides/urlBuilderRedux';
+import * as defaultSummarize from './assets/slides/defaultSummarize';
+import * as isA from './assets/slides/isA';
+import * as fenagle from './assets/slides/fenagle';
+import * as undefined from './assets/slides/undefined';
+import * as revokeable from './assets/slides/private';
+import * as trapLogger from './assets/slides/trapLogger';
 import ItrCodeSlide from './components/itrCodeSlide';
 
 import './App.css';
@@ -31,7 +37,13 @@ export default class Presentation extends React.Component
         this.state = {
             slides: [
                 urlBuilder,
-                urlBuilderRedux
+                urlBuilderRedux,
+                isA,
+                defaultSummarize,
+                fenagle,
+                undefined,
+                revokeable,
+                trapLogger
             ]
         };
     }

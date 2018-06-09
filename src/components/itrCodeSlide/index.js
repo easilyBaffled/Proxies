@@ -12,7 +12,7 @@ const decrement = ( { i } ) => ( { i: Math.max( i - 1, 0 ) } );
 const getFontSize = baseFontSize => lineNum =>
 {
     return Math.max(
-        Math.min( baseFontSize - lineNum + baseFontSize, 32 ),
+        Math.min( baseFontSize - lineNum + baseFontSize, 28 ),
         baseFontSize
     );
 };
@@ -64,7 +64,7 @@ export default class Ex extends React.Component
         let [ start, end ] = slideSections[ this.state.i ];
 
         const { height, marginTop, lengthBasedTextSize } = this.calculateSlideMesurments( start, end );
-        console.log( codeStr, slideSections, marginTop );
+
         return (
             <Slide className='nice-code'>
                 <CodePane overflow='scroll'
