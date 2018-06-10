@@ -1,4 +1,9 @@
+import every from 'lodash-es/every';
+
 import { isA } from '../../../proxies';
+
+const isArrayOfStrings = arr =>
+    !isA.array( arr ) || !every( arr, isA.string );
 
 export default log =>
 {
@@ -26,7 +31,7 @@ export default log =>
     // #### U-G-L-Y
     function fixedFinagleSomeNumbers ( target )
     {
-        if ( !isA.array( target ) || !target.every( isA.string ) ) // 😑
+        if ( isArrayOfStrings( target ) ) // !isA.array( target ) || !target.every( isA.string );
             return '';
 
         const parsed = target.map( JSON.parse );
