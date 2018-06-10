@@ -26,3 +26,21 @@
     height: 100%;
     width: 50%;
 }
+
+.fullScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0 !important;
+}
+
+video.fullScreen {
+    height: 100vh;
+    width: 100vw;
+}
+
+video.background {
+    z-index: -1000;
+}

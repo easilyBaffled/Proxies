@@ -24,7 +24,6 @@ export default pipe(
     stripIndent,
     replace( /Object\(__WEBPACK_IMPORTED_MODULE_.*\/\*\s*(.*)\s*\*\/]\)/g, '$1' ),
     replace( /__WEBPACK_IMPORTED_MODULE_.*\[.*\/* (.*) \*\/]/g, '$1' ),
-    str => ( console.log( str ), str ),
     str => prettier.format( str, { printWidth: 75, tabWidth: 4, singleQuote: true, plugins, parser: 'babylon' } ),
     addLineNumbers,
     anyFunc.split( '\n' )
