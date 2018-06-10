@@ -105,43 +105,47 @@
     ]
   },
   "babel": {
-        "env": {
-          "development": {
-            "plugins":[
-              "babel-plugin-transform-es2015-destructuring",
-              "babel-plugin-transform-class-properties",
-              [ "babel-plugin-transform-object-rest-spread",
-                {
-                  "useBuiltIns": true
-                }
-              ],
-              [
-                "babel-plugin-transform-runtime",
-                {
-                  "helpers": false,
-                  "polyfill": false,
-                  "regenerator": true
-                }
-              ],
-              [
-                "babel-plugin-transform-regenerator",
-                {
-                  "async": false
-                }
-              ],
-              "babel-plugin-syntax-dynamic-import"
-            ],
-            "presets": [
-              [ "env", {
-                "targets": {
-                  "chrome": 52
-                },
-                "modules": false,
-                "loose": true
-              } ],
-              "react"
-            ]
-          }
-        }
+    "env": {
+      "development": {
+        "plugins": [
+          "babel-plugin-transform-es2015-destructuring",
+          "babel-plugin-transform-class-properties",
+          [
+            "babel-plugin-transform-object-rest-spread",
+            {
+              "useBuiltIns": true
+            }
+          ],
+          [
+            "babel-plugin-transform-runtime",
+            {
+              "helpers": false,
+              "polyfill": false,
+              "regenerator": true
+            }
+          ],
+          [
+            "babel-plugin-transform-regenerator",
+            {
+              "async": false
+            }
+          ],
+          "babel-plugin-syntax-dynamic-import"
+        ],
+        "presets": [
+          [
+            "env",
+            {
+              "targets": {
+                "chrome": 52
+              },
+              "modules": false,
+              "loose": true
+            }
+          ],
+          "react"
+        ]
       }
+    }
+  }
 }

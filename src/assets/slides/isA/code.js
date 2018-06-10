@@ -11,18 +11,14 @@ export default log =>
     log( typeDetect( new String( 'hello' ) ) === 'String' ); // note - the object version has a capital S
 
     // check if anArray is not array of strings 😑
-    if (
-        typeDetect( anArray ) !== 'Array'
-        || !anArray.every( value => typeDetect( value ) === 'string' )
-    )
+    if ( typeDetect( anArray ) !== 'Array' || !anArray.every( value => typeDetect( value ) === 'string' ) )
         return '';
 
     // #### isA - 9
     const isA = new Proxy( {}, {
         get ( target, prop )
         {
-            return value =>
-                typeDetect( value ).toLowerCase() === prop.toLowerCase();
+            return value => typeDetect( value ).toLowerCase() === prop.toLowerCase();
         }
     } );
 
