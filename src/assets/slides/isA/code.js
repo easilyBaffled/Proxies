@@ -1,7 +1,7 @@
 /* eslint-disable no-new-wrappers */
 
-import typeDetect from 'type-detect';
-
+// import typeDetect from 'type-detect';
+const typeDetect = () => true;
 const anArray = null;
 
 export default log =>
@@ -11,7 +11,10 @@ export default log =>
     log( typeDetect( new String( 'hello' ) ) === 'String' ); // note - the object version has a capital S
 
     // check if anArray is not array of strings 😑
-    if ( typeDetect( anArray ) !== 'Array' || !anArray.every( value => typeDetect( value ) === 'string' ) )
+    if (
+        typeDetect( anArray ) !== 'Array'
+        || !anArray.every( value => typeDetect( value ) === 'string' )
+    )
         return '';
 
     // #### isA - 9

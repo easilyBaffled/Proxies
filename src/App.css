@@ -1,6 +1,7 @@
 .nice-code {
     opacity: 0.9;
     position: relative;
+    max-width: 70vw !important;
 }
 
 .nice-code > * {

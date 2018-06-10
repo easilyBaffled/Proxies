@@ -39,7 +39,7 @@ module.exports = {
         "quotes": [ 1, "single" ],
         "multiline-ternary": [ 1, "always-multiline" ],
         "import/order": [ 2, { "newlines-between": "always" } ],
-        "func-call-spacing": [ 2, "never" ],
+        "func-call-spacing": [ 1, "never" ],
         "prefer-promise-reject-errors": 2,
         "max-len": [ "error", 240 ],
         "max-depth": [ "error", 5 ],
@@ -48,7 +48,7 @@ module.exports = {
         "max-statements": [ "error", 30 ],
         "accessor-pairs": "off",
         "arrow-spacing": [
-            2,
+            1,
             {
                 "before": true,
                 "after": true
@@ -60,7 +60,7 @@ module.exports = {
             "never"
         ],
         "comma-spacing": [
-            2,
+            1,
             {
                 "before": false,
                 "after": true
@@ -92,7 +92,7 @@ module.exports = {
             2,
             "^(err|error)$"
         ],
-        "indent": [ 2, 4 ],
+        "indent": [ 1, 4 ],
         "key-spacing": "off",
         "keyword-spacing": [
             2,
@@ -240,11 +240,11 @@ module.exports = {
             }
         ],
         "semi": [
-            2,
+            1,
             "always"
         ],
         "semi-spacing": [
-            2,
+            1,
             {
                 "before": false,
                 "after": true
@@ -255,11 +255,11 @@ module.exports = {
             "always"
         ],
         "space-before-function-paren": [
-            2,
+            1,
             "always"
         ],
         "space-in-parens": [
-            2,
+            1,
             "always"
         ],
         "space-infix-ops": 2,
@@ -307,9 +307,9 @@ module.exports = {
             "never"
         ],
         "array-bracket-newline": [ 1, { "multiline": true } ],
-        "array-bracket-spacing": [ 2, "always" ],
-        "object-curly-spacing": [ 2, "always" ],
-        "block-spacing": [ 2, "always" ],
+        "array-bracket-spacing": [ 1, "always" ],
+        "object-curly-spacing": [ 1, "always" ],
+        "block-spacing": [ 1, "always" ],
         "computed-property-spacing": [ 1, "always" ]
     }
 };
