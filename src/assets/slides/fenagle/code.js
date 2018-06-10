@@ -21,7 +21,7 @@ export default log =>
     log( finagleSomeNumbers( [ 1, 2, 3 ] ) );
     // -> Uncaught SyntaxError: Unexpected number
     log( finagleSomeNumbers( [ 'a', 'b' ] ) );
-    // -> VM323:1 Uncaught SyntaxError: Unexpected token a in JSON at position 0
+    // -> Uncaught SyntaxError: Unexpected token a in JSON at position 0
 
     // #### U-G-L-Y
     function fixedFinagleSomeNumbers ( target )

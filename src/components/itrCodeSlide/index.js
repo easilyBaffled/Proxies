@@ -31,7 +31,7 @@ export default class Ex extends React.Component
 
         const codeArr = funcToSlideContent( this.props.code );
         const trueSlideSections = calculateSlideSections( codeArr, this.props.slideSections );
-        console.log( codeArr );
+
         this.state =  {
             i: 0,
             codeStr: codeArr.join( '\n' ).replace( /^(.*)\/\/ ####\s*(.*)$/gm, '$1' ),
@@ -64,7 +64,7 @@ export default class Ex extends React.Component
         let [ start, end ] = slideSections[ this.state.i ];
 
         const { height, marginTop, lengthBasedTextSize } = this.calculateSlideMesurments( start, end );
-        console.log( codeStr );
+
         return (
             <Slide className='nice-code'>
                 <CodePane overflow='scroll'
@@ -77,7 +77,7 @@ export default class Ex extends React.Component
                     maxWidth='70vw'
                     editorStyle={ {
                         marginTop: marginTop + 'px',
-                        transition: 'all 0.3s cubic-bezier(.25,.8,.25,1)',
+                        transition: 'margin 0.5s cubic-bezier(.25,.8,.25,1)',
                         boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
                         borderRadius: 6 + 'px'
                         // whiteSpace: 'pre'

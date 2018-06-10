@@ -1,16 +1,19 @@
+import isEqual from 'lodash-es/isEqual';
+
 import { isA } from '../../../proxies';
 
 export default log =>
 {
     // #### A masterpiece
-    const Undefined = ( ...stack ) => new Proxy( () => '', //
+    const Undefined = ( ...stack ) => new Proxy( () => '',
         {
             stack,
             get ( target, prop, proxy )
             {
                 return prop === 'stack'
                     ? this.stack
-                    : ( // It's just like the urlBuilder
+                    : prop === 'isUndefined' ? true
+                    : (
                         this.stack.concat( prop ),
                         proxy
                     );
@@ -33,7 +36,7 @@ export default log =>
                     return !res
                         ? Undefined( name )
                         : ( isA.primitive( res ) || name === 'prototype' )
-                            ? res // Can't wrap a primative, don't want to wrap prototype ...for now 😈
+                            ? res
                             : safe( res );
 
                 }
@@ -65,7 +68,7 @@ export default log =>
             .filter( isEven )
             .join( ' | ' );
 
-        return result === Undefined
+        return result.isUndefined
             ? ( console.log( result.stack ), '' )
             : result;
     }

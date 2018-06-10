@@ -96,4 +96,4 @@ hidden._b;
 hidden.c._d;
 // -> undefined
 const unlocked = hidden.unlock( '🔑' );
-console.log( unlocked );
+// log( unlocked );

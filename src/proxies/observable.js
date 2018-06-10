@@ -35,7 +35,7 @@ const observable = obj => new Proxy( obj, {
 );
 
 const scope = observable( {} );
-scope.subscribe( console.log );
+// scope.subscribe( console.log );
 
 scope.a = 1;
 
@@ -43,7 +43,5 @@ Object.defineProperty( scope, 'property1', {
     value: 42,
     writable: false
 } );
-
-console.log( scope, scope.subscribers );
 
 export default observable;

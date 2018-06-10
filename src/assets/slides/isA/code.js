@@ -1,7 +1,8 @@
 /* eslint-disable no-new-wrappers */
 
-// import typeDetect from 'type-detect';
-const typeDetect = () => true;
+import td from 'type-detect'; // <- this is done for the presentation because webpack mangles module names
+const typeDetect = td;
+
 const anArray = null;
 
 export default log =>

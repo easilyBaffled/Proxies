@@ -1,4 +1,3 @@
-
 import { trick as improve } from '../../../proxies';
 
 export default log =>

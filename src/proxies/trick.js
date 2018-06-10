@@ -2,8 +2,6 @@ import { pipe } from 'ramda';
 
 import { addDefaultCase, autoBind, chaining } from './index';
 
-console.log( addDefaultCase.toString() );
-
 export default pipe(
     autoBind,
     addDefaultCase( ( name, t ) => () => t.addParam( name ) ),

@@ -3,5 +3,5 @@ export const slideSections = [
     [ '#' ],
     [ '#' ],
     [ 15, 16 ],
-    [ 17, 25 ]
+    [ 17, 21 ]
 ];
