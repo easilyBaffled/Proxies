@@ -1,4 +1,4 @@
-import { trick as improve } from '../../../proxies';
+import { improve } from '../../../proxies';
 
 export default log =>
 {
@@ -51,8 +51,9 @@ export default log =>
 
     // #### Nothing is the same
     log( 'addParam' in builder );
-    log( Object.getOwnPropertyDescriptor( builder, 'url' ) );
     // -> undefined
+
+    log( Object.getOwnPropertyDescriptor( builder, 'url' ) );
     // -> undefined
 };
 

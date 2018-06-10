@@ -6,7 +6,7 @@ export { default as autoBind } from './autoBind.js';
 export { default as chaining } from './chaining.js';
 export { default as event } from './event.js';
 export { default as isA } from './isA.js';
-export { default as trick } from './trick.js';
+export { default as improve } from './improve.js';
 export { default as negativeArrayAccess } from './negativeArrayAccess.js';
 export { default as observable } from './observable.js';
 export { protectProps } from './passwordProtected.js';
