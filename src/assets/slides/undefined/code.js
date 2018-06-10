@@ -1,5 +1,3 @@
-import isEqual from 'lodash-es/isEqual';
-
 import { isA } from '../../../proxies';
 
 export default log =>
@@ -12,11 +10,12 @@ export default log =>
             {
                 return prop === 'stack'
                     ? this.stack
-                    : prop === 'isUndefined' ? true
-                    : (
-                        this.stack.concat( prop ),
-                        proxy
-                    );
+                    : prop === 'isUndefined'
+                        ? true
+                        : (
+                            this.stack.concat( prop ),
+                            proxy
+                        );
             },
             apply ( target, thisArg, argumentsList )
             {

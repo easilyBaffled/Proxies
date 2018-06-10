@@ -1,6 +1,4 @@
-import undef from './code';
-undef( console.log );
-export const code = undef;
+export { default as code } from './code';
 export const slideSections = [
     [ '#' ],
     [ 2, 2 ],
