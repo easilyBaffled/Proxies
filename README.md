@@ -5,7 +5,7 @@ The talk was to show people the many different ways they use proxies. You can go
 ( hint: click on the code-pane to progress through the example and then use the arrows to navigate between slides and  )
 Or if future me has done his job you can watch a video of it [here]( # SHAME )
 
-The slide content are in [`src/assets/slides`](https://github.com/easilyBaffled/Proxies/tree/master/src/assets/slides). All of my notes are also kept in there in Outline.md. 
+The slide content are in [`src/slides`](https://github.com/easilyBaffled/Proxies/tree/master/src/slides). All of my notes are also kept in there in Outline.md. 
 The presentation itself was written as a React App using [Spectacle](https://formidable.com/open-source/spectacle/) so if you would like to run through it, clone the project run 
 
 ```

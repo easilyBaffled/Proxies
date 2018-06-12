@@ -20,10 +20,11 @@ const getFontSize = lineNum =>
             : lineNum > 3 ? 2
                 : 3;
     const sizing = fontRhythm[ index ];
-    sizing.fontSize = baseFontSize * parseFloat( sizing.fontSize );
-    sizing.lineHeight = baseLineHeight * parseFloat( sizing.lineHeight );
-
-    return sizing;
+    console.log(sizing, parseFloat( sizing.fontSize ), parseFloat( sizing.lineHeight ));
+    return {
+        fontSize: baseFontSize * parseFloat( sizing.fontSize ),
+        lineHeight: baseLineHeight * parseFloat( sizing.lineHeight )
+    };
 };
 
 
@@ -62,8 +63,11 @@ const fontRhythm = [
     // }
 ];
 
+const EasyProgress = ( { current, total } ) =>
+    <div className='bar' style={ { width: ( current / total * 100 ) + '%' } } />;
+
 /** */
-export default class Ex extends React.Component 
+export default class IterableCodeSlide extends React.Component
 {
   static propTypes = {
       slideSections: arrayOf( arrayOf( oneOfType( [ number, string ] ) ) ),
@@ -96,11 +100,9 @@ export default class Ex extends React.Component
 
       const { lineHeight, fontSize } = getFontSize( snippetLength );
 
-      const lineSize = lineHeight * fontSize;
+      const height = lineHeight * snippetLength + lineHeight / 2;
 
-      const height = lineSize * snippetLength + lineSize / 2;
-
-      const marginTop = ( start - 1 ) * -lineSize;
+      const marginTop = ( start - 1 ) * -lineHeight;
 
       return { height, marginTop, fontSize };
   }
@@ -137,7 +139,7 @@ export default class Ex extends React.Component
                       // whiteSpace: 'pre'
                   } }
               />
-              <div className='left' onClick={ () => this.setState( decrement ) } />
+              <div className='left' onClick={ this.emitKeyEvent } />
               <div className='right' onClick={ () => this.setState( this.boundInc ) } />
           </Slide>
       );
