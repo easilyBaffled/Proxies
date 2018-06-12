@@ -104,7 +104,7 @@ export default class IterableCodeSlide extends React.Component
 
       const marginTop = ( start - 1 ) * -lineHeight;
 
-      return { height, marginTop, fontSize };
+      return { height, marginTop, fontSize, lineHeight };
   }
 
   /** */
@@ -117,7 +117,8 @@ export default class IterableCodeSlide extends React.Component
       const {
           height,
           marginTop,
-          fontSize
+          fontSize,
+          lineHeight
       } = this.calculateSlideMesurments( start, end );
 
       return (
@@ -135,11 +136,12 @@ export default class IterableCodeSlide extends React.Component
                       marginTop: marginTop + 'px',
                       transition: 'margin 0.5s cubic-bezier(.25,.8,.25,1)',
                       boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-                      borderRadius: 6 + 'px'
+                      borderRadius: 6 + 'px',
+                      lineHeight: lineHeight + 'px'
                       // whiteSpace: 'pre'
                   } }
               />
-              <div className='left' onClick={ this.emitKeyEvent } />
+              <div className='left' onClick={ () => this.setState( decrement ) } />
               <div className='right' onClick={ () => this.setState( this.boundInc ) } />
           </Slide>
       );
