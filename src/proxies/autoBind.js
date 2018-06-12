@@ -4,7 +4,8 @@ import isA from './isA';
  AutoBind - http://2ality.com/2013/06/auto-binding.html
  may be too complext to talk about
  ***************/
-const autoBind = obj => new Proxy( obj, {
+const autoBind = obj =>
+    new Proxy( obj, {
     // Talk about target vs receiver
     /*
         The wrapped object returned by autoBind may not be the first member in a chain of prototype objects.
@@ -12,14 +13,14 @@ const autoBind = obj => new Proxy( obj, {
         Thus, the result (*) must come from target. In contrast, this must be bound to receiver (**),
         so that the bound method has access to properties of prior objects.
     */
-    get ( target, key, receiver ) 
-    {
-        const result = target[ key ]; // *
-        return isA.function( result )
-            ? result.bind( receiver ) // **
-            : result;
-    }
-} );
+        get ( target, key, receiver ) 
+        {
+            const result = target[ key ]; // *
+            return isA.function( result )
+                ? result.bind( receiver ) // **
+                : result;
+        }
+    } );
 
 export default autoBind;
 

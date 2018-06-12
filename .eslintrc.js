@@ -30,8 +30,8 @@ module.exports = {
     "rules": {
         "react/jsx-curly-spacing": [1, {"when": "always", "children": true}],
         "react/prop-types": 1, // because this shouldn't block a commit
-        "react/jsx-indent": [ 2, 4 ],
-        "react/jsx-indent-props": [2, 'first' ],
+        "react/jsx-indent": [ 1, 4 ],
+        "react/jsx-indent-props": [1, 'first' ],
         "no-global-assign": ["error", {"exceptions": ["require"]}],
         "no-native-reassign": ["error", {"exceptions": ["require"]}],
         "brace-style": ["error", "allman"],

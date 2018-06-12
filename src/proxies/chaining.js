@@ -3,20 +3,20 @@ import isA from './isA';
 /***************************
  Chaining
  ***************************/
-const chain = func => new Proxy( func, {
-    get ( target, key, proxy )
-    {
-        const prop = Reflect.get( target, key );
+const chain = func =>
+    new Proxy( func, {
+        get ( target, key, proxy ) 
+        {
+            const prop = Reflect.get( target, key );
 
-        return isA.function( prop )
-            ? ( ...args ) => 
-            {
-                return prop( ...args ) || proxy;
-            }
-            : prop;
-    }
-} );
-
+            return isA.function( prop )
+                ? ( ...args ) => 
+                {
+                    return prop( ...args ) || proxy;
+                }
+                : prop;
+        }
+    } );
 
 /*
 const _d = chain( document );

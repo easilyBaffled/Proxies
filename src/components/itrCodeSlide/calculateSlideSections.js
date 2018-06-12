@@ -1,4 +1,3 @@
-
 import findIndex from 'lodash-es/findIndex';
 import last from 'lodash-es/last';
 import isEmpty from 'lodash-es/isEmpty';
@@ -10,15 +9,10 @@ const calcSubsection = ( arr, [ previousIndex ] ) =>
     const startingIndex = findIndex( arr, includes( '####' ), previousIndex ) + 1; // if it's -1 then this will return 0, TODO: is that ok?
     const endingIndex = findIndex( arr, includes( '####' ), startingIndex );
 
-    return [
-        startingIndex,
-        endingIndex < 0 ? arr.length : endingIndex
-    ];
+    return [ startingIndex, endingIndex < 0 ? arr.length : endingIndex ];
 };
 
-
-
-export default ( codeArr, slideSections ) =>
+export default ( codeArr, slideSections ) => 
 {
     return slideSections.reduce(
         ( acc, sec ) =>

@@ -4,15 +4,15 @@ import kebabCase from 'lodash-es/kebabCase';
 // :: void -> Object
 export default new Proxy(
     {},
-    {   // :: string -> Component
+    {
+    // :: string -> Component
         get: ( _, name ) => ( { children, className, ...props } ) => (
-            <div className={`${kebabCase( name )} ${className}`} {...props}>
-                {children}
+            <div className={ `${kebabCase( name )} ${className}` } { ...props }>
+                { children }
             </div>
         )
     }
 );
-
 
 // Example
 /*

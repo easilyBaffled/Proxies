@@ -1,11 +1,12 @@
 export default defaultHandler => obj => 
 {
-    const def = typeof defaultHandler === 'function'
+    const def =
+    typeof defaultHandler === 'function'
         ? defaultHandler
         : () => defaultHandler;
 
     return new Proxy( obj, {
-        get ( target, name, proxy )
+        get ( target, name, proxy ) 
         {
             const result = Reflect.get( target, name );
             return result || def( name, target, proxy );

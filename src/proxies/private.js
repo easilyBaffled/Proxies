@@ -7,36 +7,30 @@ import isA from './isA';
  *******************/
 const hideProps = ( obj, lockString ) => 
 {
-    const isLocked = str => isA.string( str ) ? str.startsWith( lockString ) : false;
+    const isLocked = str =>
+        isA.string( str ) ? str.startsWith( lockString ) : false;
     const wrap = child =>
         typeof child === 'object' || typeof child === 'function'
             ? hideProps( child, lockString )
             : child;
     return new Proxy( obj, {
-        get ( target, key )
+        get ( target, key ) 
         {
-            return isLocked( key )
-                ? undefined
-                : wrap( Reflect.get( target, key ) );
+            return isLocked( key ) ? undefined : wrap( Reflect.get( target, key ) );
         },
-        set ( target, key, value )
+        set ( target, key, value ) 
         {
-            return isLocked( key )
-                ? true
-                : wrap( Reflect.set( target, key, value ) );
+            return isLocked( key ) ? true : wrap( Reflect.set( target, key, value ) );
         },
-        has ( target, key )
+        has ( target, key ) 
         {
-            return isLocked( key )
-                ? false
-                : wrap( Reflect.has( target, key ) );
+            return isLocked( key ) ? false : wrap( Reflect.has( target, key ) );
         },
-        ownKeys ( target )
+        ownKeys ( target ) 
         {
-            return Reflect.ownKeys( target )
-                .filter( key => !isLocked( key ) );
+            return Reflect.ownKeys( target ).filter( key => !isLocked( key ) );
         },
-        getOwnPropertyDescriptor ( target, key )
+        getOwnPropertyDescriptor ( target, key ) 
         {
             return isLocked( key )
                 ? undefined
@@ -59,7 +53,6 @@ const hidden = hideProps(
     },
     '_'
 );
-
 
 Object.keys( hidden );
 // -> [ "a", "c" ]

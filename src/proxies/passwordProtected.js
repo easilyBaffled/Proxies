@@ -21,19 +21,17 @@ import isA from './isA';
  *******************/
 export const protectProps = ( obj, lockString ) => 
 {
-    const isLocked = str => isA.string( str ) ? str.startsWith( lockString ) : false;
+    const isLocked = str =>
+        isA.string( str ) ? str.startsWith( lockString ) : false;
 
     const wrap = child =>
         typeof child === 'object' || typeof child === 'function'
             ? protectProps( child, lockString )
             : child;
 
-    const { proxy, revoke } =  Proxy.revocable( obj, {
-        unlock: str =>
-            str === '🔑'
-                ? ( revoke(), obj )
-                : '🔒',
-        get ( target, name )
+    const { proxy, revoke } = Proxy.revocable( obj, {
+        unlock: str => ( str === '🔑' ? ( revoke(), obj ) : '🔒' ),
+        get ( target, name ) 
         {
             return name === 'unlock'
                 ? this.unlock
@@ -41,24 +39,19 @@ export const protectProps = ( obj, lockString ) =>
                     ? undefined
                     : wrap( Reflect.get( target, name ) );
         },
-        set ( target, name, value )
+        set ( target, name, value ) 
         {
-            return isLocked( name )
-                ? true
-                : wrap( Reflect.set( target, name, value ) );
+            return isLocked( name ) ? true : wrap( Reflect.set( target, name, value ) );
         },
-        has ( target, name )
+        has ( target, name ) 
         {
-            return isLocked( name )
-                ? false
-                : wrap( Reflect.has( target, name ) );
+            return isLocked( name ) ? false : wrap( Reflect.has( target, name ) );
         },
-        ownKeys ( target )
+        ownKeys ( target ) 
         {
-            return Reflect.ownKeys( target )
-                .filter( key => !isLocked( key ) );
+            return Reflect.ownKeys( target ).filter( key => !isLocked( key ) );
         },
-        getOwnPropertyDescriptor ( target, name )
+        getOwnPropertyDescriptor ( target, name ) 
         {
             return isLocked( name )
                 ? undefined
@@ -83,7 +76,6 @@ const hidden = protectProps(
     },
     '_'
 );
-
 
 Object.keys( hidden );
 // -> [ "a", "c" ]

@@ -1,22 +1,25 @@
 function urlBuilder ( domain ) 
 {
     var parts = [];
-    var proxy = new Proxy( function () 
-    {
-        var returnValue = domain + '/' + parts.join( '/' );
-        parts = [];
-        return returnValue;
-    }, {
-        has: function () 
+    var proxy = new Proxy(
+        function () 
         {
-            return true;
+            var returnValue = domain + '/' + parts.join( '/' );
+            parts = [];
+            return returnValue;
         },
-        get: function ( object, prop ) 
         {
-            parts.push( prop );
-            return proxy;
+            has: function () 
+            {
+                return true;
+            },
+            get: function ( object, prop ) 
+            {
+                parts.push( prop );
+                return proxy;
+            }
         }
-    } );
+    );
     return proxy;
 }
 /*

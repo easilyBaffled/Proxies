@@ -1,8 +1,7 @@
 import isA from './isA';
 
-const Undefined = ( ...stack ) => new Proxy(
-    () => '',
-    {
+const Undefined = ( ...stack ) =>
+    new Proxy( () => '', {
         stack,
         get ( _, name, proxy ) 
         {
@@ -10,17 +9,14 @@ const Undefined = ( ...stack ) => new Proxy(
                 ? 'Proxy:Undefined' // Only time name isn't a string
                 : name === 'stack'
                     ? this.stack
-                    : (
-                        this.stack.push( name ), // Update the source
-                        proxy                   // Return what we will use
-                    );
+                    : ( this.stack.push( name ), // Update the source
+                    proxy ); // Return what we will use
         },
         apply ( target, thisArg, argumentsList ) 
         {
             return Undefined( ...this.stack, argumentsList ); //
         }
-    }
-);
+    } );
 
 const safe = obj =>
     new Proxy( obj, {
@@ -31,10 +27,9 @@ const safe = obj =>
                 const res = Reflect.get( target, name );
                 return !res
                     ? Undefined( name )
-                    : ( isA.primitive( res ) || name === 'prototype' )
+                    : isA.primitive( res ) || name === 'prototype'
                         ? res // Can't wrap a primative, don't want to wrap prototype ...for now 😈
                         : safe( res );
-
             }
             catch ( e ) 
             {
@@ -63,9 +58,7 @@ function finagleSomeNumbers ( target )
         .filter( isEven )
         .join( ' | ' );
 
-    return result === Undefined
-        ? ( console.log( result.stack ), '' )
-        : result;
+    return result === Undefined ? ( console.log( result.stack ), '' ) : result;
 }
 
 finagleSomeNumbers( [ '1', '2', '3', '4' ] );

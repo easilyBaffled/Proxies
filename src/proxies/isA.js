@@ -2,17 +2,21 @@ import isPrimitive from 'is-primitive';
 import typeDetect from 'type-detect';
 
 import addDefaultCase from './addDefaultCase';
-const isA = new Proxy( { // Custom types
-    primitive: isPrimitive
-}, {
-    get ( customTypes, name )
+const isA = new Proxy(
     {
-        return target =>
-            customTypes[ name ]
-                ? customTypes[ name ]( target )
-                : typeDetect( target ).toLowerCase() === name.toLowerCase();
+    // Custom types
+        primitive: isPrimitive
+    },
+    {
+        get ( customTypes, name ) 
+        {
+            return target =>
+                customTypes[ name ]
+                    ? customTypes[ name ]( target )
+                    : typeDetect( target ).toLowerCase() === name.toLowerCase();
+        }
     }
-} );
+);
 
 // ====== Examples
 isA.number( 0 );
@@ -33,8 +37,8 @@ isA.Proxy( isA );
 isA.Proxy( new Proxy( {}, {} ) );
 // -> false
 
-export const alt = addDefaultCase( name =>
-    ( target ) => typeDetect( target ).toLowerCase() === name.toLowerCase()
+export const alt = addDefaultCase( name => target =>
+    typeDetect( target ).toLowerCase() === name.toLowerCase()
 )( {} );
 
 export default isA;

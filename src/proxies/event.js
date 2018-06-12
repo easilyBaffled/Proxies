@@ -1,12 +1,13 @@
 const evt = [];
-const eventAggregator = func => new Proxy( func, {
-    apply ( target, thisArg, argumentsList  ) 
-    {
-        console.log( argumentsList[ 0 ] );
-        evt.push( argumentsList[ 0 ] );
-        return Reflect.apply( target, thisArg, argumentsList );
-    }
-} );
+const eventAggregator = func =>
+    new Proxy( func, {
+        apply ( target, thisArg, argumentsList ) 
+        {
+            console.log( argumentsList[ 0 ] );
+            evt.push( argumentsList[ 0 ] );
+            return Reflect.apply( target, thisArg, argumentsList );
+        }
+    } );
 
 // HTMLElement.prototype.addEventListener = new Proxy(
 //     HTMLElement.prototype.addEventListener,

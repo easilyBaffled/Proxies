@@ -14,9 +14,7 @@ Assert.propTypes = {
 };
 
 export const Asserts = ( { conditions } ) => (
-    <El.app>
-        { conditions.map( con => <Assert con={con} /> ) }
-    </El.app>
+    <El.app>{ conditions.map( con => <Assert con={ con } /> ) }</El.app>
 );
 Asserts.propTypes = {
     conditions: arrayOf( func )
