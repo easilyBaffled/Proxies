@@ -1,16 +1,13 @@
 import { improve } from "../../proxies/index";
 
-export default log => 
-{
+export default log => {
   // #### History
   const urlBuilder = {
     url: [],
-    addParam(str) 
-{
+    addParam(str) {
       this.url.push(str);
     },
-    getUrl() 
-{
+    getUrl() {
       return "/" + this.url.join("/");
     }
   };

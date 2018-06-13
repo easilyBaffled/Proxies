@@ -19,14 +19,14 @@ const getFontSize = lineNum =>
         : lineNum > 5 ? 1
             : lineNum > 3 ? 2
                 : 3;
+
     const sizing = fontRhythm[ index ];
-    console.log(sizing, parseFloat( sizing.fontSize ), parseFloat( sizing.lineHeight ));
+
     return {
         fontSize: baseFontSize * parseFloat( sizing.fontSize ),
-        lineHeight: baseLineHeight * parseFloat( sizing.lineHeight )
+        lineHeight: baseLineHeight * parseFloat( sizing.lineHeight ) + parseFloat( sizing.marginTop )
     };
 };
-
 
 const baseFontSize = 18;
 const baseLineHeight = 23;

@@ -5,25 +5,23 @@ const typeDetect = td;
 
 const anArray = null;
 
-export default log => 
-{
+export default log => {
   // #### Yeah but, I'm lazy and Objects are weird sometimes
   log(typeDetect("hello world") === "string");
   log(typeDetect(new String("hello")) === "String"); // note - the object version has a capital S
 
   // check if anArray is not array of strings 😑
   if (
-    typeDetect(anArray) !== "Array"
-    || !anArray.every(value => typeDetect(value) === "string")
+    typeDetect(anArray) !== "Array" ||
+    !anArray.every(value => typeDetect(value) === "string")
   )
     return "";
 
-  // #### isA - 9
+  // #### isA
   const isA = new Proxy(
     {},
     {
-      get(target, prop) 
-{
+      get(target, prop) {
         return value => typeDetect(value).toLowerCase() === prop.toLowerCase();
       }
     }

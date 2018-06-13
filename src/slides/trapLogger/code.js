@@ -1,12 +1,9 @@
-export default log => 
-{
+export default log => {
   // #### One Hell of a Logger
   const proxyProxyTrapLogger = (obj = {}) =>
     new Proxy(obj, {
-      get(target, trapName) 
-{
-        return (...args) => 
-{
+      get(target, trapName) {
+        return (...args) => {
           // args[0] is the targetObj
           let a =
             args.length > 2 ? args.slice(1, args.length - 1) : args.slice(1);

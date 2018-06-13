@@ -14,8 +14,8 @@ export default (
     <Heading size={2} fit caps>
       Danny Michaelis
     </Heading>
-    <Link href='https://github.com/easilyBaffled'>
-      <Text bold textColor='tertiary'>
+    <Link href="https://github.com/easilyBaffled">
+      <Text bold textColor="tertiary">
         @easilyBaffled
       </Text>
     </Link>

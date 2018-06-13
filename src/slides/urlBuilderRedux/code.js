@@ -1,16 +1,13 @@
 /* eslint-disable no-use-before-define*/
 
-export default log => 
-{
+export default log => {
   // #### Back to the Builder
   const urlBuilder = {
     url: [],
-    addParam(str) 
-{
+    addParam(str) {
       this.url.push(str);
     },
-    getUrl() 
-{
+    getUrl() {
       return "/" + this.url.join("/");
     }
   };
@@ -20,11 +17,8 @@ export default log =>
   // #### Default Handler Proxy
   const improve = targetObject =>
     new Proxy(targetObject, {
-      // object of traps
-      get(target, prop, proxy) 
-{
+      get(target, prop, proxy) {
         const result = Reflect.get(target, prop, proxy);
-
         return result || (() => (target.addParam(prop), proxy));
       }
     });
