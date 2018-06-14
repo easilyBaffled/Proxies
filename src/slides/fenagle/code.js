@@ -4,11 +4,13 @@ import { isA } from "../../proxies/index";
 
 const isArrayOfStrings = arr => !isA.array(arr) || !every(arr, isA.string);
 
-export default log => {
+export default log => 
+{
   // ####Fenagle
   const isEven = num => !(parseInt(num) % 2);
 
-  function finagleSomeNumbers(target) {
+  function finagleSomeNumbers(target) 
+{
     return target
       .map(JSON.parse)
       .filter(isEven)
@@ -26,7 +28,8 @@ export default log => {
   // -> Uncaught SyntaxError: Unexpected token a in JSON at position 0
 
   // #### U-G-L-Y
-  function fixedFinagleSomeNumbers(target) {
+  function fixedFinagleSomeNumbers(target) 
+{
     if (isArrayOfStrings(target))
       // !isA.array( target ) || !target.every( isA.string );
       return "";

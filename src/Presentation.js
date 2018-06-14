@@ -21,7 +21,6 @@ import ItrCodeSlide from './components/itrCodeSlide';
 import './App.css';
 
 require( 'normalize.css' );
-console.log( mdnProxy );
 
 const theme = createTheme( {
     primary: 'linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)',

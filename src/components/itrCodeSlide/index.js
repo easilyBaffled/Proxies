@@ -52,7 +52,8 @@ const fontRhythm = [
     { // < 3
         fontSize: '2.61111111rem',
         lineHeight: '1.46808511rem',
-        marginTop: '0.4893617rem',
+        // marginTop: '0.4893617rem',
+        marginTop: '20',
         marginBottom: '0.4893617rem'
     }
     // {
@@ -78,7 +79,14 @@ export default class IterableCodeSlide extends React.Component
   constructor ( props ) 
   {
       super( props );
-
+      try
+      {
+          this.props.code( console.log )
+      }
+      catch ( e )
+      {
+          console.log( "---" );
+      }
       const codeArr = funcToSlideContent( this.props.code );
       const trueSlideSections = calculateSlideSections(
           codeArr,

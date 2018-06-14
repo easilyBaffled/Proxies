@@ -2,7 +2,13 @@
 
 import { isA } from "../../proxies/index";
 
-export default log => {
+
+/**
+ * This example will not work because protectProps is used before it is declared for the sake of the presentation
+ * So to run it copy and paste that `protectProps` chuck of code at top of the function
+ */
+export default log => 
+{
   // #### How to Use
   const hidden = protectProps(
     {
@@ -47,7 +53,8 @@ export default log => {
   // },
 
   // #### The Proxy
-  const protectProps = (obj, lockString) => {
+  const protectProps = (obj, lockString) =>
+{
     const isLocked = str =>
       isA.string(str) ? str.startsWith(lockString) : false;
 
@@ -58,23 +65,28 @@ export default log => {
 
     const { proxy, revoke } = Proxy.revocable(obj, {
       unlock: str => (str === "🔑" ? (revoke(), obj) : "🔒"),
-      get(target, prop) {
+      get(target, prop) 
+{
         return prop === "unlock"
           ? this.unlock
           : isLocked(prop)
             ? undefined
             : wrap(Reflect.get(target, prop));
       },
-      set(target, prop, value) {
+      set(target, prop, value) 
+{
         return isLocked(prop) ? true : wrap(Reflect.set(target, prop, value));
       },
-      has(target, prop) {
+      has(target, prop) 
+{
         return isLocked(prop) ? false : wrap(Reflect.has(target, prop));
       },
-      ownKeys(target) {
+      ownKeys(target) 
+{
         return Reflect.ownKeys(target).filter(key => !isLocked(key));
       },
-      getOwnPropertyDescriptor(target, prop) {
+      getOwnPropertyDescriptor(target, prop) 
+{
         return isLocked(prop)
           ? undefined
           : wrap(Reflect.getOwnPropertyDescriptor(target, prop));

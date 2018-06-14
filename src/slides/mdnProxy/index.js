@@ -11,8 +11,8 @@ preloader({
 export default (
   <Slide className={"fullScreen"}>
     <video
-      className="fullScreen background"
-      name="MDN Proxy Docs"
+      className='fullScreen background'
+      name='MDN Proxy Docs'
       src={proxyScroll}
       autoPlay
     />
