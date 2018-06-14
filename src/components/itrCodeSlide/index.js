@@ -145,12 +145,12 @@ export default class IterableCodeSlide extends React.Component
                       transition: 'margin 0.5s cubic-bezier(.25,.8,.25,1)',
                       boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
                       borderRadius: 6 + 'px',
-                      lineHeight: lineHeight + 'px'
-                      // whiteSpace: 'pre'
+                      lineHeight: lineHeight + 'px',
+                      overflow: 'scroll'
                   } }
               />
-              <div className='left' onClick={ () => this.setState( decrement ) } />
-              <div className='right' onClick={ () => this.setState( this.boundInc ) } />
+               <div className='left' onClick={ () => this.setState( decrement ) } />
+               <div className='right' onClick={ () => this.setState( this.boundInc ) } />
           </Slide>
       );
   }

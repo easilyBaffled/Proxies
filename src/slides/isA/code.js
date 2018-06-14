@@ -9,7 +9,7 @@ export default log =>
 {
   // #### Yeah but, I'm lazy and Objects are weird sometimes
   log(typeDetect("hello world") === "string");
-  log(typeDetect(new String("hello")) === "String"); // note - the object version has a capital S
+  log(typeDetect(new String("hello")) === "String");
 
   // check if anArray is not array of strings 😑
   if (
@@ -19,13 +19,12 @@ export default log =>
     return "";
 
   // #### isA
-  const isA = new Proxy(
-    {},
+  const isA = new Proxy( {},
     {
-      get(target, prop) 
-{
-        return value => typeDetect(value).toLowerCase() === prop.toLowerCase();
-      }
+        get(target, prop)
+        {
+            return value => typeDetect(value).toLowerCase() === prop.toLowerCase();
+        }
     }
   );
 
