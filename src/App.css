@@ -1,7 +1,36 @@
+@font-face {
+    font-family: 'firaCode';
+    src: url('https://cdn.rawgit.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'firaCode';
+    src: url('https://cdn.rawgit.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'firaCode';
+    src: url('https://cdn.rawgit.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Retina.ttf');
+    font-weight: retina;
+    font-style: italic;
+}
+
+body * {
+    font-family: firaCode !important;
+    font-variant-ligatures: contextual;
+}
+
+x-screen x-row { font-variant-ligatures: contextual; }
+
+
 .nice-code {
     opacity: 0.9;
     position: relative;
-    max-width: 70vw !important;
+    max-width: 80vw !important;
 }
 
 .nice-code > * {

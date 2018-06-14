@@ -1,2 +1,2 @@
 export { default as code } from "./code";
-export const slideSections = [["#"], ["#"], [16, 18], [16, 20], ["#"], ["#"]];
+export const slideSections = [["#"], ["#"], [15, 17], [16, 19], ["#"], ["#"]];

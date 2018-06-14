@@ -26,7 +26,7 @@ const theme = createTheme( {
     primary: 'linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)',
     secondary: 'linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%)',
     tertiary: 'linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%)',
-    quarternary: 'red'
+    quarternary: 'rgba( 255, 255, 255, 0.7 )'
 }, {
     primary: 'Montserrat',
     secondary: 'Helvetica'

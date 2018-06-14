@@ -35,7 +35,7 @@ export default log =>
   // -> [ 'url', 'addParam', 'getUrl' ]
 
   // #### Things get weird
-  log(builder.c); // -> undefined ?
+  log(builder.c);
   // -> () => (
   //      target.addParam( name ),
   //      p
@@ -48,7 +48,7 @@ export default log =>
       .e()
       .f()
       .getUrl()
-  ); // -> ?
+  );
   // -> /d/e/f
 
   // #### It's a witch!

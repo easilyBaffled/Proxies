@@ -81,11 +81,11 @@ export default class IterableCodeSlide extends React.Component
       super( props );
       try
       {
-          this.props.code( console.log )
+          this.props.code( console.log );
       }
       catch ( e )
       {
-          console.log( "---" );
+          console.log( '---' );
       }
       const codeArr = funcToSlideContent( this.props.code );
       const trueSlideSections = calculateSlideSections(
@@ -130,7 +130,7 @@ export default class IterableCodeSlide extends React.Component
       } = this.calculateSlideMesurments( start, end );
 
       return (
-          <Slide className='nice-code'>
+          <Slide className='nice-code' controlColor='#ffffff'>
               <CodePane
                   overflow='scroll'
                   height={ height }
@@ -146,11 +146,13 @@ export default class IterableCodeSlide extends React.Component
                       boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
                       borderRadius: 6 + 'px',
                       lineHeight: lineHeight + 'px',
-                      overflow: 'scroll'
+                      overflow: 'scroll',
+                      fontFamily: 'firaCode !important',
+                      fontVariantLigatures: 'contextual'
                   } }
               />
-               <div className='left' onClick={ () => this.setState( decrement ) } />
-               <div className='right' onClick={ () => this.setState( this.boundInc ) } />
+              <div className='left' onClick={ () => this.setState( decrement ) } />
+              <div className='right' onClick={ () => this.setState( this.boundInc ) } />
           </Slide>
       );
   }
