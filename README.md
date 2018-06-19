@@ -24,5 +24,5 @@ Sources:
 + [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 + [Chapter 6. Proxies - Exploring.js](http://exploringjs.com/es6/ch_proxies.html) by Dr. Axel Rauschmayer
 + [Easy Dynamic Regular Expressions with Tagged Template Literals and Proxies](http://lea.verou.me/2018/06/easy-dynamic-regular-expressions-with-tagged-template-literals-and-proxies) by LEA VEROU
-+ [Javascript Metaprogramming - ES6 Proxy Use and Abuse" ](http://jsconfbp.com/speakers/eirik-vullum/) by Erik Vullum 
++ [Javascript Metaprogramming - ES6 Proxy Use and Abuse ](http://jsconfbp.com/speakers/eirik-vullum/) by Erik Vullum 
 
