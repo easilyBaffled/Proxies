@@ -1,5 +1,7 @@
 # What You Can Do With Proxies
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/easilyBaffled/What-You-Can-Do-With-Proxies.svg)](https://greenkeeper.io/)
+
 Welcome to my brain. Or at least my brain as it dumped resources and assets for a lighting talk about [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 The talk was to show people the many different ways they use proxies. You can go through it yourself [here]( # SHAME )
 ( hint: click on the code-pane to progress through the example and then use the arrows to navigate between slides and  )
